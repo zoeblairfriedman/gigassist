@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :musician_bands
   resources :bands
   resources :gig_songs
   resources :gigs

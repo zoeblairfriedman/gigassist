@@ -1,6 +1,5 @@
 class Gig < ApplicationRecord
     belongs_to :band
-    belongs_to :musician
-    has_many :gigsongs
-    has_many :songs, through: :gigsongs
+    has_many :gig_songs
+    has_many :songs, through: :gig_songs
 end

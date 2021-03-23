@@ -6,12 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-musicians = Musician.create([{name: "Zoe Friedman"}, 
-{name: "Tony Calabro"}, 
-{name: "Nick Cambell"}, 
-{name: "Drew Thurlow"}, 
-{name: "Kwame Remy"}, 
-{name: "Patty Nilson"}])
+
 
 songs = Song.create([{name: "Pour Some Sugar"}, 
 {name: "Love Bites"}, 
@@ -32,13 +27,36 @@ bands = Band.create([{name: "Dum Cheeta"},
 {name: "VIPER"}, 
 {name: "Russ Bennet Band"}])
 
-#can i have multiple musician IDs here? i.e. musician_ids: => [1, 3]
-#how do i do date??
-gigs = Gig.create([
-{venue: "Ryland Inn", date:  , band_id: 2, musician_id: 1},
-{venue: "Ryland Inn", date:  , band_id: 2, musician_id: 3},
+musicians = Musician.create([{name: "Zoe Friedman"}, 
+{name: "Tony Calabro"}, 
+{name: "Nick Cambell"}, 
+{name: "Drew Thurlow"}, 
+{name: "Kwame Remy"}, 
+{name: "Patty Nilson"}])
 
-
+MusicianBand.create([
+    {musician_id: 1, band_id: 1},
+    {musician_id: 1, band_id: 2},
+    {musician_id: 1, band_id: 3},
+    {musician_id: 1, band_id: 4},
+    {musician_id: 1, band_id: 5}
 ])
 
-gigsongs = 
+#how do i do date??
+gigs = Gig.create([
+{venue: "Ryland Inn", band_id: 2},
+{venue: "University Club", band_id: 2},
+{venue: "Whiskey-a-go-go", band_id: 3},
+{venue: "Mercury Lounge", band_id: 1}
+])
+
+{venue: "Arlene's Grocery", date: Date.new, band_id: 6}
+
+gigsongs = GigSong.create([
+    {original: false, notes: "slower than the original", song_id: 3, gig_id: 1},
+    {original: true, song_id: 4, gig_id: 1},
+    {original: true, song_id: 3, gig_id: 2},
+    {original: true, notes: "Funny full-band intro", song_id: 1, gig_id: 4},
+])
+
+#relationships aren't working
