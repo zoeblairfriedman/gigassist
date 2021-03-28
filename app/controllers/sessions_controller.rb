@@ -3,18 +3,18 @@ class SessionsController < ApplicationController
     end
 
     def create
-        binding.pry
         @musician = Musician.find_by(name: params[:musician][:name])
-        binding.pry
-        if @musican && @musician.authenticate(params[:musician][:password])
-            binding.pry
-            session[:user_id] = @musician.id
-            redirect_to musician_gigs_path
+        if @musician && @musician.authenticate(params[:musician][:password])
+          session[:user_id] = @musician.id
+          redirect_to musician_gigs_path(@musician)
+        elsif @musician
+          @errors = ["Invalid Password"]
+          render :new
         else
-            binding.pry
-            render :new
+          @errors = ["Invalid Username"]
+          render :new
         end
-    end
+      end
 
     def destroy
         session.clear
