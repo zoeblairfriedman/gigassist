@@ -8,17 +8,17 @@ class SessionsController < ApplicationController
           session[:user_id] = @musician.id
           redirect_to musician_gigs_path(@musician)
         elsif @musician
-          @errors = ["Invalid Password"]
+          @errors = ["Incorrect Password"]
           render :new
         else
-          @errors = ["Invalid Username"]
+          @errors = ["Incorrect Username"]
           render :new
         end
       end
 
     def destroy
         session.clear
-        redirect_to "/signup"
+        redirect_to "/login"
     end
 
 end
