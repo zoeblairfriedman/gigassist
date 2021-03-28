@@ -1,0 +1,11 @@
+<h2> Sign Up </h2>
+
+<%= form_for @musician, url: signup_path do |f| %>
+    <%= f.label "Name" %>
+    <%= f.text_field :name %> <br>
+    <%= f.label "Password" %>
+    <%= f.password_field :password %> <br> 
+    <%= f.label "Password Confirmation" %>
+    <%= f.password_field :password_confirmation %> <br>
+    <%= f.submit %>
+  <% end %>
