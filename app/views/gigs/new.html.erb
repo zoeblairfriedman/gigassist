@@ -1,1 +1,24 @@
 <h2> New Gig </h2>
+
+
+<%= form_for @gig do |f| %>
+    <%= f.label "Venue" %>
+    <%= f.text_field :venue %> <br>
+    <%= f.label "Select or Create Band" %>
+
+    <%= f.text_field :band_name, list: "bands_autocomplete" %>
+    <datalist id="bands_autocomplete">
+      <% @bands.each do |band| %>
+        <option value="<%= band.name %>">
+      <% end %>
+    </datalist>
+    <%= f.label "date" %>
+    <%= f.date_field :date %> <br>
+
+      <h4> Songs field coming soon </h4>
+      <h4> Also we need the band to be added to the current user's bands </h4>
+
+    <%= f.submit %>
+  <% end %>
+
+

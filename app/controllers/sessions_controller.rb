@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
         @musician = Musician.find_by(name: params[:musician][:name])
         if @musician && @musician.authenticate(params[:musician][:password])
           session[:user_id] = @musician.id
-          redirect_to musician_gigs_path(@musician)
+          redirect_to musician_path(@musician)
         elsif @musician
           @errors = ["Incorrect Password"]
           render :new
