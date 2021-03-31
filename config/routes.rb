@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     resources :gigs
   end
 
+  #gig_songs should be nested under gigs <--do i end up using this? 
+  resources :gigs do
+    resources :gig_songs
+  end
+  
+
   resources :songs
 
   get '/signup', to: "musicians#new", as: "signup"

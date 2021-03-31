@@ -1,8 +1,3 @@
-<h2><%= @musician.name %></h2>
+<h2><%= @musician.name %>'s Gigassist</h2>
 
-<h2> Upcoming Gigs </h2>
-<ul>
-<% @gigs.each do |gig| %>
-    <li><%= gig.band.name %> at <%= link_to gig.venue, gig_path(gig) %></li>
-    <% end %>
-    </ul>
+<h3> You have <%= @gigs.size %> gigs coming up and <%= @songs.size %> songs to practice. </h3>

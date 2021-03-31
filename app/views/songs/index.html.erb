@@ -1,0 +1,9 @@
+<h2> Upcoming Songs </h2>
+
+<ul>
+<% @gigs.each do |gig| %>
+    <% gig.gig_songs.each do |gs| %> 
+        <li> <%= gs.details %> </li>
+        <% end %>
+    <% end %>
+    </ul>

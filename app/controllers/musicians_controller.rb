@@ -1,5 +1,8 @@
 class MusiciansController < ApplicationController
 
+    before_action(:confirm_login, only: [:show]) 
+    before_action(:current_musician, except: [:new, :create])  
+
     def new
         @musician = Musician.new
     end
@@ -16,8 +19,8 @@ class MusiciansController < ApplicationController
     end
 
     def show
-        @musician = Musician.find_by(id: params[:id])
         @gigs = @musician.gigs
+        @songs = @musician.songs
         @bands = @musician.bands
     end
 

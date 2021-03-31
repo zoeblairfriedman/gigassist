@@ -13,6 +13,8 @@
     <% if current_musician %>
 
       <%= link_to "Home", musician_path(current_musician), method: :post %>
+      <%= link_to "Your Songs", songs_path, method: :get %>
+      <%= link_to "Your Gigs", musician_gigs_path(current_musician), method: :get %>
       <%= link_to "Add Gig", new_musician_gig_path(current_musician), method: :get %>
       <%= link_to "Log Out", logout_path, method: :post %>
     <% else %>

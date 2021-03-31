@@ -4,5 +4,10 @@ class Musician < ApplicationRecord
     has_many :gigs, through: :bands
     has_many :songs, through: :gigs
     has_secure_password
+
+    validates_uniqueness_of :name
+    validates_presence_of :name
+    validates_presence_of :password
+    validates_presence_of :password_confirmation
 end
 
