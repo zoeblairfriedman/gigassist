@@ -5,23 +5,23 @@ before_action(:confirm_login, :current_musician)
 def new
     @gig = Gig.new
     @bands = Band.all
-    #is this what I need for this or just songs? 
-    #should it be a datalist? 
+    @songs = Song.all
     20.times do 
         @gig.gig_songs.build
     end
 end
 
 def create
-    @gig = Gig.create(gig_params)
-    #add new songs here
-    
+    @gig = Gig.new(gig_params)
+
     if !current_musician.bands.include?(@gig.band)
         current_musician.bands << @gig.band
     end
     if @gig.save 
         redirect_to gig_path(@gig)
     else
+        @bands = Band.all
+        @songs = Song.all
         render :new
     end
 end
@@ -40,8 +40,7 @@ end
 
 #what should go here??? if it's gig_song it will need song_id, gig_id, original boolean, and notes
 def gig_params
-    # binding.pry
-    params.require(:gig).permit(:venue, :date, :band_name, gig_songs_attributes: [], songs_attributes: [])
+    params.require(:gig).permit(:venue, :date, :band_name, gig_songs_attributes: [:original, :notes, :id, :song_name, :gig_id])
 end
 
 end
