@@ -9,8 +9,19 @@ class Gig < ApplicationRecord
         self.band = Band.find_or_create_by(name: name)
       end
    
-      def band_name
+    def band_name
          self.band ? self.band.name : nil
-      end
+    end
+
+    #maybe I need this? 
+    def gig_songs_attributes=(noclue)
+      #if the song exists
+        #find the song
+        #update the song
+      #else
+        #build the song
+      #end
+    end
+
 
 end

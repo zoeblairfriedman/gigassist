@@ -24,6 +24,7 @@ class MusiciansController < ApplicationController
         @bands = @musician.bands
     end
 
+private
 
     def musician_params
         params.require(:musician).permit(:name, :password, :password_confirmation)
