@@ -1,0 +1,35 @@
+
+<%= form_for @gig do |f| %>
+    <%= f.label "Venue" %>
+    <%= f.text_field :venue %> <br>
+    <%= f.label "Select or Create Band" %>
+
+    <%= f.text_field :band_name, list: "bands_autocomplete" %>
+    <datalist id="bands_autocomplete">
+      <% @bands.each do |band| %>
+        <option value="<%= band.name %>">
+      <% end %>
+    </datalist>
+    <%= f.label "date" %>
+    <%= f.date_field :date %> <br>
+
+      <h4> Set List: </h4>
+
+      <p> The issue is I need to establish gig_songs and gigs at the same time....i think? <p>
+       
+      <%=f.fields_for :songs do |s| %>
+        <h4> Add Song </h4>
+        <%=s.name "Name:"%>
+        <%=s.text_field :name%>
+        <%=s.notes "Original Version?"%>
+        <%=s.checkbox :original%>
+        <%=s.notes "Notes"%>
+        <%=s.text_field :notes%>
+      <%end%>  
+
+  
+
+    <%= f.submit %>
+  <% end %>
+
+
