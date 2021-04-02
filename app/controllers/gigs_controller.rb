@@ -45,12 +45,12 @@ def update
         @bands = Band.all
         @songs = Song.all
         render :edit
-    end
-    
+    end  
 end
 
 def show
     @gig = Gig.find_by(id: params[:id])
+    bouncer
     @gig_songs = @gig.gig_songs
 end
 

@@ -6,6 +6,11 @@ class Gig < ApplicationRecord
 
     scope :by_date, -> { order(date: :asc) }
 
+    def show_date
+      self.date.strftime("%a %B %d, %Y")   
+    end
+
+
     def band_name=(name)
         self.band = Band.find_or_create_by(name: name)
       end

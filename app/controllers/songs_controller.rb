@@ -7,8 +7,10 @@ class SongsController < ApplicationController
         @gigs = current_musician.gigs
         @gs_array = []
         @gigs.each do |gig|
-            gig.gig_songs.each do |gs|       
+            gig.gig_songs.each do |gs|  
+                if !@gs_array.any?{|a| a.song_id == gs.song_id} 
                      @gs_array << gs
+                end
             end
         end
         #this is not working

@@ -3,3 +3,13 @@
 Most common song?
 One Hit Wonders
 Busiest Band
+
+
+<h3> Next five gigs....how do i make them for the user </h3>
+<ol>
+<% @five_gigs.each do |gig| %>
+<li><%= gig.venue %> - <%= gig.show_date %></li>
+<% end %>
+</ol>
+
+

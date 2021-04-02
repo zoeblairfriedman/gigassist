@@ -3,7 +3,7 @@
 <ul>
 
     <% @gs_array.each do |gs| %>
-        <li> <%= gs.details %> - <%= gs.show_date %> </li>
+        <li> <%= gs.song.name %> - <%= gs.show_date %> </li>
         <% end %>
 
     </ul>

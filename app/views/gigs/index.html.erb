@@ -1,7 +1,7 @@
 <h2> All Gigs </h2>
 <ul>
 <% @gigs.each do |gig| %>
-    <li><%= gig.band.name %> at <%= link_to gig.venue, gig_path(gig) %></li>
+    <li><%= gig.band.name %> at <%= link_to gig.venue, gig_path(gig) %> <%= gig.show_date %></li>
     <% end %>
     </ul>
 

@@ -8,6 +8,8 @@ class MusiciansController < ApplicationController
     end
 
     def stats
+        @five_gigs = Gig.limit(5).order(date: :asc)
+        #can i turn this into a scope method? scope :dates, -> { order(date: :asc) }
     end
 
     def create
@@ -23,7 +25,7 @@ class MusiciansController < ApplicationController
 
     def show
         @gigs = @musician.gigs
-        @songs = @musician.songs
+        @songs = @musician.songs.uniq
         @bands = @musician.bands
     end
 
