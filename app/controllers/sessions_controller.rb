@@ -11,10 +11,10 @@ class SessionsController < ApplicationController
           session[:user_id] = @musician.id
           redirect_to musician_path(@musician)
         elsif @musician
-          @errors = ["Incorrect Password"]
+          @errors = ["Invalid Password"]
           render :new
         else
-          @errors = ["Incorrect Username"]
+          @errors = ["Invalid Username"]
           render :new
         end
       end

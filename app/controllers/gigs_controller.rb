@@ -16,7 +16,8 @@ def create
     if !current_musician.bands.include?(@gig.band)
         current_musician.bands << @gig.band
     end
-    if @gig.save 
+    if @gig.save
+        flash[:message] = "Rock. Gig Saved!" 
         redirect_to gig_path(@gig)
     else
         20.times do 

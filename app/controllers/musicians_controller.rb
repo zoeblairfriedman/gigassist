@@ -28,9 +28,15 @@ class MusiciansController < ApplicationController
     end
 
     def show
-        @gigs = @musician.gigs.not_over
-        @songs = current_musician.gig_songs.unique.not_over.size
-        @bands = @musician.bands
+            user = Musician.find_by(id: params[:id])
+            if user == current_musician
+                @gigs = @musician.gigs.not_over
+                @songs = current_musician.gig_songs.unique.not_over.size
+                @bands = @musician.bands
+            else
+                flash[:message] = "Denied."
+                redirect_to musician_path(current_musician)
+            end
     end
 
 private

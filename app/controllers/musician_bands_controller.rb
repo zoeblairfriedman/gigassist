@@ -1,2 +1,0 @@
-class MusicianBandsController < ApplicationController
-end
