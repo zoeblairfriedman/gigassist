@@ -2,6 +2,8 @@ class GigSong < ApplicationRecord
     belongs_to :gig 
     belongs_to :song
 
+    scope :by_date, -> { order(date: :asc) }
+    scope :unique, -> { group(:song_id) }
 
     def song_name=(name)
         self.song = Song.find_or_create_by(name: name) unless name == ""
@@ -11,6 +13,7 @@ class GigSong < ApplicationRecord
         self.song ? self.song.name : nil
     end
 
+    #candidate for helper module
     def details
         "#{self.song.name} - #{self.version} #{self.add_notes}" 
     end

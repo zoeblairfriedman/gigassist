@@ -55,7 +55,7 @@ def show
 end
 
 def index
-    @gigs = @musician.gigs
+    @gigs = @musician.gigs.by_date
     @songs = @musician.songs
     @bands = @musician.bands
 end
