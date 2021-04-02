@@ -4,7 +4,7 @@ class SongsController < ApplicationController
    
 
     def index
-        @gs_array = current_musician.gig_songs.by_date.unique
+        @gs_array = current_musician.gig_songs.by_date.unique.not_over
     end
 
 

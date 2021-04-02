@@ -1,15 +1,9 @@
-<h2> Your Stats! </h2>
 
-Most common song?
-One Hit Wonders
-Busiest Band
+<h4> Your next gig: </h4>
+<%= @next_gig.venue %> - <%= show_date(@next_gig) %>
+
+<h4> Most played song: </h4>
 
 
-<h3> Next five gigs....how do i make them for the user </h3>
-<ol>
-<% @five_gigs.each do |gig| %>
-<li><%= gig.venue %> - <%= gig.show_date %></li>
-<% end %>
-</ol>
 
 

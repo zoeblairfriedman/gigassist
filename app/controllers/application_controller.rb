@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
     def bouncer
       if !in_band?
-        @errors = ["You cannot view other band's setlists"]
+        flash[:message] = "You are not in this band"
         #how can i get this to show errors? i can't render outside the controller can I?
         redirect_to musician_path(current_musician)
       end

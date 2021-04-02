@@ -19,6 +19,9 @@ def create
     if @gig.save 
         redirect_to gig_path(@gig)
     else
+        20.times do 
+            @gig.gig_songs.build
+        end
         @bands = Band.all
         @songs = Song.all
         render :new
@@ -29,6 +32,7 @@ def edit
     @bands = Band.all
     @songs = Song.all
     @gig = Gig.find_by(id: params[:id])
+    bouncer
     20.times do 
         @gig.gig_songs.build
     end
@@ -55,7 +59,8 @@ def show
 end
 
 def index
-    @gigs = @musician.gigs.by_date
+    @gigs = @musician.gigs
+    @gigs = @musician.gigs.by_date.not_over
     @songs = @musician.songs
     @bands = @musician.bands
 end

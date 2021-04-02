@@ -3,13 +3,13 @@ class Gig < ApplicationRecord
     has_many :gig_songs
     has_many :songs, through: :gig_songs
     accepts_nested_attributes_for :gig_songs
+    validates_presence_of :date
+    validates_presence_of :band
+    validates_presence_of :venue
 
     scope :by_date, -> { order(date: :asc) }
-
-    def show_date
-      self.date.strftime("%a %B %d, %Y")   
-    end
-
+    scope :not_over, -> { where("date > ?", DateTime.now)}
+   
 
     def band_name=(name)
         self.band = Band.find_or_create_by(name: name)
