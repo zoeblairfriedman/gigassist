@@ -4,6 +4,8 @@ class Gig < ApplicationRecord
     has_many :songs, through: :gig_songs
     accepts_nested_attributes_for :gig_songs
 
+    scope :by_date, -> { order(date: :asc) }
+
     def band_name=(name)
         self.band = Band.find_or_create_by(name: name)
       end
@@ -14,11 +16,14 @@ class Gig < ApplicationRecord
 
     def gig_songs_attributes=(hash)
       hash.each do |gs|
-        if gs[1][:song_name] != ""
-          a = GigSong.new(gs[1])
-          self.gig_songs << a
+        if gs[1][:song_name] != "" && GigSong.find_by(id: gs[1][:id])
+          a = GigSong.find_by(id: gs[1][:id])
+          a.update(original: gs[1][:original], notes: gs[1][:notes], song_name: gs[1][:song_name])
+        elsif gs[1][:song_name] != ""
+            a = GigSong.new(gs[1])
+            self.gig_songs << a
+          end
         end
-      end
     end
 
 

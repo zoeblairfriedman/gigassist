@@ -7,6 +7,9 @@ class MusiciansController < ApplicationController
         @musician = Musician.new
     end
 
+    def stats
+    end
+
     def create
         @musician = Musician.new(musician_params)
         if @musician.save

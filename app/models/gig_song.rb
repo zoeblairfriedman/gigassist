@@ -2,6 +2,7 @@ class GigSong < ApplicationRecord
     belongs_to :gig 
     belongs_to :song
 
+
     def song_name=(name)
         self.song = Song.find_or_create_by(name: name) unless name == ""
     end
@@ -19,13 +20,17 @@ class GigSong < ApplicationRecord
     end
 
     def add_notes
-        if self.notes 
+        if self.notes != ""
             "- Notes: #{self.notes}"
         end
     end
 
-    def date
+    def gs_date
         self.gig.date
+    end
+
+    def show_date
+        gs_date.strftime("%a %B %d, %Y")   
     end
 
 end

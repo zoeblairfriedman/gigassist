@@ -8,3 +8,5 @@
 <p> <% @gig_songs.each do |gs| %>
     <li> <%= gs.details %> </li>
         <% end %> </p>
+
+<%= link_to "Edit Gig", edit_gig_path(@gig) %>

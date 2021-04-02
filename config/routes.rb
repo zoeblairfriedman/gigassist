@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   
 
   resources :songs
-
+  get '/stats', to: "musicians#stats"
+  get '/', to: "sessions#welcome"
   get '/signup', to: "musicians#new", as: "signup"
   post '/signup', to: "musicians#create"
   get '/login', to: "sessions#new", as: "login"

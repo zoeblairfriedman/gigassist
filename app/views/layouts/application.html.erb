@@ -14,14 +14,15 @@
 
 
 <nav class="navbar navbar-light bg-light container">
-  <div class="w-50 p-3">
-  <img src="/logo.png" class="img-fluid">
+  <div class="w-50 p-4">
+  <a href="/"><img src="/logo.png" class="img-fluid"></a>
 </div>
   <form class="form-inline">
   <% if current_musician %>
     <%= link_to "Home", musician_path(current_musician), method: :post, :class => "btn btn-outline-dark" %>
-    <%= link_to "Your Songs", songs_path, method: :get, :class => "btn btn-outline-dark" %>
-    <%= link_to "Your Gigs", musician_gigs_path(current_musician), method: :get, :class => "btn btn-outline-dark" %>
+    <%= link_to "Songs", songs_path, method: :get, :class => "btn btn-outline-dark" %>
+    <%= link_to "Gigs", musician_gigs_path(current_musician), method: :get, :class => "btn btn-outline-dark" %>
+    <%= link_to "Stats", stats_path, method: :get, :class => "btn btn-outline-dark" %>
     <%= link_to "Add Gig", new_musician_gig_path(current_musician), method: :get, :class => "btn btn-outline-dark" %>
     <%= link_to "Log Out", logout_path, method: :post, :class => "btn btn-outline-dark" %>
       <% else %>

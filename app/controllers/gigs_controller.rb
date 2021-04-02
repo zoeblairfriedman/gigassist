@@ -13,7 +13,6 @@ end
 
 def create
     @gig = Gig.new(gig_params)
-
     if !current_musician.bands.include?(@gig.band)
         current_musician.bands << @gig.band
     end
@@ -24,6 +23,30 @@ def create
         @songs = Song.all
         render :new
     end
+end
+
+def edit 
+    @bands = Band.all
+    @songs = Song.all
+    @gig = Gig.find_by(id: params[:id])
+    20.times do 
+        @gig.gig_songs.build
+    end
+end
+
+def update
+    @gig = Gig.find_by(id: params[:id])
+    if !current_musician.bands.include?(@gig.band)
+        current_musician.bands << @gig.band
+    end
+    if @gig.update(gig_params)
+        redirect_to gig_path(@gig)
+    else
+        @bands = Band.all
+        @songs = Song.all
+        render :edit
+    end
+    
 end
 
 def show

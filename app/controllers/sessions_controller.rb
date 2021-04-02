@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
     def new
     end
 
+    def welcome
+    end
+
     def create
         @musician = Musician.find_by(name: params[:musician][:name])
         if @musician && @musician.authenticate(params[:musician][:password])
