@@ -8,7 +8,7 @@ class MusiciansController < ApplicationController
     end
 
     def stats
-        @next_gig = current_musician.gigs.by_date.first
+        @next_gig = current_musician.gigs.by_date.not_over.first
         @most_played = nil
         # gigsongs = current_musician.gig_songs
         # binding.pry

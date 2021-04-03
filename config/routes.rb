@@ -1,20 +1,12 @@
 Rails.application.routes.draw do
-  resources :musician_bands
-  resources :bands
-  resources :gig_songs
-  resources :gigs
+
 
   resources :musicians, except: [:new, :create] do 
     resources :gigs
   end
+  resources :gigs
+  resources :songs, only: :index
 
-  #gig_songs should be nested under gigs <--do i end up using this? 
-  resources :gigs do
-    resources :gig_songs
-  end
-  
-
-  resources :songs
   get '/stats', to: "musicians#stats"
   get '/', to: "sessions#welcome"
   get '/signup', to: "musicians#new", as: "signup"
