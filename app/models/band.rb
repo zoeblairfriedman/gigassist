@@ -6,4 +6,5 @@ class Band < ApplicationRecord
     has_many :songs, through: :gig_songs
     validates_uniqueness_of :name
     
+    scope :most_gigs, -> { order(:gigs.length) }
 end

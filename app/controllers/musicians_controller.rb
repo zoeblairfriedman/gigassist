@@ -10,9 +10,9 @@ class MusiciansController < ApplicationController
         @next_gig = current_musician.gigs.by_date.not_over.first
         @most_played = song_counts.sort_by {|k,v| v}.reverse.first[0].name
         @count = song_counts.sort_by {|k,v| v}.reverse.first[1]
-        # @test = current_musician.gigs.by_band
+        @busiest = current_musician.bands.most_gigs.first
+        @busiest_count = @busiest.gigs.size
         
-
     end
 
     def create
