@@ -4,8 +4,8 @@ class GigSong < ApplicationRecord
 
     scope :by_date, -> { order(date: :asc) }
     scope :unique, -> { group(:song_id) }
-    scope :by_count, -> { count(song: :desc) }
     scope :not_over, -> { where("date > ?", DateTime.now)}
+    
     
     def song_name=(name)
         self.song = Song.find_or_create_by(name: name) unless name == ""
@@ -14,8 +14,6 @@ class GigSong < ApplicationRecord
     def song_name
         self.song ? self.song.name : nil
     end
-
-    #candidate for helper module
 
     def version
         self.original ? "Original Version" : "#{self.gig.band.name} Version"

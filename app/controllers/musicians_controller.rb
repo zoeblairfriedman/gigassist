@@ -8,10 +8,11 @@ class MusiciansController < ApplicationController
 
     def stats
         @next_gig = current_musician.gigs.by_date.not_over.first
-        @most_played = nil
-        # gigsongs = current_musician.gig_songs
-        # binding.pry
-        # gigsongs.by_count
+        song_counts = current_musician.songs.each_with_object(Hash.new(0)) do |song, new_hash|
+            new_hash[song] += 1  
+        end
+        @most_played = song_counts.sort_by {|k,v| v}.reverse.first[0].name
+        @count = song_counts.sort_by {|k,v| v}.reverse.first[1]
 
     end
 

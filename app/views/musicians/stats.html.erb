@@ -1,9 +1,9 @@
-
-<h4> Your next gig: </h4>
-<%= @next_gig.venue %> - <%= show_date(@next_gig) %>
-
-<h4> Most played song: </h4>
-
-
+<ol>
+<li><h5> Your next gig: </h5>
+<%= @next_gig.venue %> - <%= show_date(@next_gig) %></li>
+<br>
+<li><h5> Most played song: </h5>
+"<%= @most_played %>" has appeared <%= @count %> times</li>
+</ol>
 
 
