@@ -1,14 +1,10 @@
 class GigsController < ApplicationController
-
 before_action(:confirm_login, :current_musician)  
 
 def new
     @gig = Gig.new
-    @bands = Band.all
-    @songs = Song.all
-    20.times do 
-        @gig.gig_songs.build
-    end
+    set_songs_and_bands_all
+    set_list
 end
 
 def create
@@ -20,41 +16,34 @@ def create
         flash[:message] = "Rock. Gig Saved!" 
         redirect_to gig_path(@gig)
     else
-        20.times do 
-            @gig.gig_songs.build
-        end
-        @bands = Band.all
-        @songs = Song.all
+        set_list
+        set_songs_and_bands_all
         render :new
     end
 end
 
 def edit 
-    @bands = Band.all
-    @songs = Song.all
-    @gig = Gig.find_by(id: params[:id])
+    set_songs_and_bands_all
+    set_gig
     bouncer
-    20.times do 
-        @gig.gig_songs.build
-    end
+    set_list
 end
 
 def update
-    @gig = Gig.find_by(id: params[:id])
+    set_gig
     if !current_musician.bands.include?(@gig.band)
         current_musician.bands << @gig.band
     end
     if @gig.update(gig_params)
         redirect_to gig_path(@gig)
     else
-        @bands = Band.all
-        @songs = Song.all
+        set_songs_and_bands_all
         render :edit
     end  
 end
 
 def show
-    @gig = Gig.find_by(id: params[:id])
+    set_gig
     bouncer
     @gig_songs = @gig.gig_songs
 end
@@ -67,7 +56,24 @@ def index
 end
 
 
-#what should go here??? if it's gig_song it will need song_id, gig_id, original boolean, and notes
+
+private 
+
+def set_list
+    20.times do 
+        @gig.gig_songs.build
+    end
+end
+
+def set_gig
+    @gig = Gig.find_by(id: params[:id])
+end
+
+def set_songs_and_bands_all
+    @bands = Band.all
+    @songs = Song.all
+end
+
 def gig_params
     params.require(:gig).permit(:venue, :date, :band_name, gig_songs_attributes: [:original, :notes, :id, :song_name, :gig_id])
 end

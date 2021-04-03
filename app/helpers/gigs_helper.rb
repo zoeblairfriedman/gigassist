@@ -4,4 +4,5 @@ module GigsHelper
         gig.date.strftime("%a %B %d, %Y")   
       end
 
+      
 end

@@ -6,7 +6,7 @@
 <h3> Setlist: </h3>
 
 <p> <% @gig_songs.each do |gs| %>
-    <li> <%= gs.details %> </li>
+    <li> <%= details(gs) %> </li>
         <% end %> </p>
 
 <%= link_to "Edit Gig", edit_gig_path(@gig) %>

@@ -16,9 +16,6 @@ class GigSong < ApplicationRecord
     end
 
     #candidate for helper module
-    def details
-        "#{self.song.name} - #{self.version} #{self.add_notes}" 
-    end
 
     def version
         self.original ? "Original Version" : "#{self.gig.band.name} Version"

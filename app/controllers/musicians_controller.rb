@@ -1,5 +1,4 @@
 class MusiciansController < ApplicationController
-
     before_action(:confirm_login, only: [:show]) 
     before_action(:current_musician, except: [:new, :create])  
 
