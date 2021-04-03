@@ -8,6 +8,13 @@ class Musician < ApplicationRecord
 
     validates_uniqueness_of :name
     validates_presence_of :name
+    before_validation :name_is_titlecase, on: :create
+
+    private
+
+    def name_is_titlecase
+        self.name = self.name.titlecase
+    end
 
   
 end
