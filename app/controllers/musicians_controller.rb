@@ -8,11 +8,10 @@ class MusiciansController < ApplicationController
 
     def stats
         @next_gig = current_musician.gigs.by_date.not_over.first
-        song_counts = current_musician.songs.each_with_object(Hash.new(0)) do |song, new_hash|
-            new_hash[song] += 1  
-        end
         @most_played = song_counts.sort_by {|k,v| v}.reverse.first[0].name
         @count = song_counts.sort_by {|k,v| v}.reverse.first[1]
+        # @test = current_musician.gigs.by_band
+        
 
     end
 
@@ -40,6 +39,14 @@ class MusiciansController < ApplicationController
     end
 
 private
+
+    def song_counts
+        counts = current_musician.songs.each_with_object(Hash.new(0)) do |song, new_hash|
+            new_hash[song] += 1  
+        end
+        counts
+    end
+
 
     def musician_params
         params.require(:musician).permit(:name, :password, :password_confirmation)
