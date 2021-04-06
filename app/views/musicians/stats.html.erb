@@ -1,12 +1,16 @@
-<ol>
-<li><h5> Your next gig: </h5>
-<%= @next_gig.venue %> - <%= show_date(@next_gig) %></li>
-<br>
-<li><h5> Most played song: </h5>
-"<%= @most_played %>" has appeared <%= @count %> times</li>
-<br>
-<li><h5> Most played song: </h5>
-<%= @busiest.name %> plays the most with <%= @busiest_count %> gigs on the books</li>
-</ol>
+<% if @musician.gigs.count == 0 || @musican.songs.count == 0 %>
+    <h3> Add some gigs to get started! </h3>
+<% else %>
+    <ol>
+    <li><h5> Your next gig: </h5>
+    <%= @next_gig.venue %> - <%= show_date(@next_gig) %></li>
+    <br>
+    <li><h5> Most played song: </h5>
+    "<%= @most_played %>" has appeared <%= @count %> times</li>
+    <br>
+    <li><h5> Most played song: </h5>
+    <%= @busiest.name %> plays the most with <%= @busiest_count %> gigs on the books</li>
+    </ol>
+<% end %>
 
 

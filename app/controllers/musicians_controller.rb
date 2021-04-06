@@ -7,12 +7,13 @@ class MusiciansController < ApplicationController
     end
 
     def stats
-        @next_gig = current_musician.gigs.by_date.not_over.first
-        @most_played = song_counts.sort_by {|k,v| v}.reverse.first[0].name
-        @count = song_counts.sort_by {|k,v| v}.reverse.first[1]
-        @busiest = current_musician.bands.most_gigs.first
-        @busiest_count = @busiest.gigs.size
-        
+        if current_musician.gigs.count != 0 && current_musician.songs.count != 0
+            @next_gig = current_musician.gigs.by_date.not_over.first
+            @most_played = song_counts.sort_by {|k,v| v}.reverse.first[0].name
+            @count = song_counts.sort_by {|k,v| v}.reverse.first[1]
+            @busiest = current_musician.bands.most_gigs.first
+            @busiest_count = @busiest.gigs.size
+        end
     end
 
     def create
