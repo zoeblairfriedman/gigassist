@@ -5,8 +5,7 @@ class GigSong < ApplicationRecord
     scope :by_date, -> { order(date: :asc) }
     scope :unique, -> { group(:song_id) }
     scope :not_over, -> { where("date > ?", DateTime.now)}
-    scope :by_gig, -> { group(:gig_id) }
-    scope :by_band, -> { group(:band_id) }
+
 
     
     def song_name=(name)

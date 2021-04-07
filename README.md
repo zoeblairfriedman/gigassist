@@ -1,3 +1,5 @@
+# Adds instructions for Omniauth here!!
+
 # README
 
 GIGASSIST

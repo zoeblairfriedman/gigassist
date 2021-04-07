@@ -1,6 +1,8 @@
 class GigsController < ApplicationController
-before_action(:confirm_login, :current_musician)  
+before_action(:confirm_login, :current_musician)
 
+
+# refactor all private methods into a before action. Controller is currently repetetive
 def new
     @gig = Gig.new
     set_songs_and_bands_all
@@ -49,10 +51,12 @@ def show
 end
 
 def index
+    @musician = Musician.find_by(id: params[:musician_id])
     @gigs = @musician.gigs
     @gigs = @musician.gigs.by_date.not_over
     @songs = @musician.songs
     @bands = @musician.bands
+  
 end
 
 
@@ -73,6 +77,7 @@ def set_songs_and_bands_all
     @bands = Band.all
     @songs = Song.all
 end
+
 
 def gig_params
     params.require(:gig).permit(:venue, :date, :band_name, gig_songs_attributes: [:original, :notes, :id, :song_name, :gig_id])
