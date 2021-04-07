@@ -1,6 +1,6 @@
 class MusiciansController < ApplicationController
     before_action(:confirm_login, only: [:show]) 
-    before_action(:current_musician, except: [:new, :create])  
+    before_action(:current_musician, except: [:new, :create, :allstar])  
 
     def new
         @musician = Musician.new
@@ -14,6 +14,8 @@ class MusiciansController < ApplicationController
             @busiest = current_musician.bands.most_gigs.first
             @busiest_count = @busiest.gigs.size
         end
+        @list = Musician.all.sort_by{|musician| musician.gigs.length}.reverse.take(5)
+        @allstar = @list.first
     end
 
     def create

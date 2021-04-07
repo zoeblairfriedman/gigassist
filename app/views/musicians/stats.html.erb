@@ -1,16 +1,21 @@
-<% if @musician.gigs.count == 0 || @musican.songs.count == 0 %>
+<% if @musician.gigs.count == 0 || @musician.songs.count == 0 %>
     <h3> Add some gigs to get started! </h3>
 <% else %>
-    <ol>
-    <li><h5> Your next gig: </h5>
-    <%= @next_gig.venue %> - <%= show_date(@next_gig) %></li>
-    <br>
-    <li><h5> Most played song: </h5>
-    "<%= @most_played %>" has appeared <%= @count %> times</li>
-    <br>
-    <li><h5> Most played song: </h5>
-    <%= @busiest.name %> plays the most with <%= @busiest_count %> gigs on the books</li>
-    </ol>
+<h3> Your Stats </h3>
+
+    <h5> Your next gig: </h5>
+    <p><%= link_to @next_gig.band.name, gig_path(@next_gig) %> at <%= @next_gig.venue %> - <%= show_date(@next_gig) %></p>
+    <h5> Most played song: </h5>
+    <p> "<%= @most_played %>" has appeared in your setlists <%= @count %> times </p>
+    <h5> Your busiest band </h5>
+    <p><%= @busiest.name %> plays the most with <%= @busiest_count %> gigs on the books</p>
+
 <% end %>
 
+<h3> Gig masters: </h3>
+<ol>
+<% @list.each do |musician| %>
+    <li> <%= musician.name %> has <%= musician.gigs.size %> registered gigs </li>
+    <% end %>
+    </ol>
 

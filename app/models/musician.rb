@@ -10,6 +10,8 @@ class Musician < ApplicationRecord
     validates_presence_of :name
     before_validation :name_is_titlecase, on: :create
 
+
+
     private
 
     def name_is_titlecase
