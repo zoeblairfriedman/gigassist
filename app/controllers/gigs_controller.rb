@@ -53,7 +53,6 @@ def index
 end
 
 
-
 private 
 
 def set_list
