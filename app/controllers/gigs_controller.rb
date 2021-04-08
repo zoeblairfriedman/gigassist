@@ -1,11 +1,13 @@
 class GigsController < ApplicationController
 before_action(:confirm_login, :current_musician)
+before_action(:set_songs_and_bands_all, only: [:new, :create, :edit, :update])
+before_action(:set_gig, only: [:edit, :update, :show])
+before_action(:set_list, only: [:edit])
+before_action(:bouncer, only: [:edit, :show])
 
 
-# refactor all private methods into a before action. Controller is currently repetetive
 def new
     @gig = Gig.new
-    set_songs_and_bands_all
     set_list
 end
 
@@ -19,34 +21,25 @@ def create
         redirect_to gig_path(@gig)
     else
         set_list
-        set_songs_and_bands_all
         render :new
     end
 end
 
 def edit 
-    set_songs_and_bands_all
-    set_gig
-    bouncer
-    set_list
 end
 
 def update
-    set_gig
     if !current_musician.bands.include?(@gig.band)
         current_musician.bands << @gig.band
     end
     if @gig.update(gig_params)
         redirect_to gig_path(@gig)
     else
-        set_songs_and_bands_all
         render :edit
     end  
 end
 
 def show
-    set_gig
-    bouncer
     @gig_songs = @gig.gig_songs
 end
 
