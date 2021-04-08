@@ -11,6 +11,21 @@ Install the gems required by the application by running 'bundle install'
 Migrate all tables and create the database by running 'rails db:migrate'
 Seed the database by running 'rails db:seed'
 
+* Google Authentication
+OPTIONAL: You will need to create your own Google ID and Secret to utilize google authentication. If you would like to take advantage of this feature complete the following steps:
+1. Visit https://console.cloud.google.com/
+2. Create a New Project
+3. Under the "API & Services" tab, select "OAuth Consent Screen"
+4. Select "External" or "Internal" User type
+5. Fill out the App information (not all fields are necessary)
+6. Move to the "Credentials" tab and select "Create Credentials"
+7. From the dropdown select OAuth Client ID
+8. Select "Web Application"
+9. Under "Authorized redirect URI's" add http://localhost:3000/admins/auth/google_oauth2/callback
+10. You will then see your unique ID and Secret. Create a .env file at the root folder of the application and fill it out as follows:
+       GOOGLE_KEY=YOUR_KEY_HERE
+       GOOGLE_SECRET=YOUR_SECRET_HERE
+
 * Start Server
 Start the server by running 'rails s'
 
