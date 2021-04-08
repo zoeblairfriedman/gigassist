@@ -52,6 +52,6 @@ private
 
 
     def musician_params
-        params.require(:musician).permit(:name, :password, :password_confirmation)
+        params.require(:musician).permit(:name, :email, :password, :password_confirmation)
     end
 end

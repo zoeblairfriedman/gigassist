@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
     def bouncer
       if !in_band?
-        flash[:message] = "You are not in this band"
+        flash[:message] = "You are not in this band and do not have access to view or edit this specific gig information"
         redirect_to musician_path(current_musician)
       end
     end

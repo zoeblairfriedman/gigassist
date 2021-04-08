@@ -5,6 +5,8 @@
 <%= form_for @musician, url: signup_path do |f| %>
     <%= f.label "Name" %>
     <%= f.text_field :name %> <br>
+    <%= f.label "Email" %>
+    <%= f.text_field :email %> <br>
     <%= f.label "Password" %>
     <%= f.password_field :password %> <br> 
     <%= f.label "Password Confirmation" %>

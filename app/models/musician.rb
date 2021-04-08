@@ -6,8 +6,8 @@ class Musician < ApplicationRecord
     has_many :songs, through: :gigs
     has_secure_password
 
-    validates_uniqueness_of :name
-    validates_presence_of :name
+    validates_uniqueness_of :email
+    validates_presence_of :name, :email
     before_validation :name_is_titlecase, on: :create
 
 

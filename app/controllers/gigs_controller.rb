@@ -1,6 +1,5 @@
 class GigsController < ApplicationController
 before_action(:confirm_login, :current_musician)
-before_action(:)
 
 
 # refactor all private methods into a before action. Controller is currently repetetive

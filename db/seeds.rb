@@ -27,12 +27,12 @@ bands = Band.create([{name: "Dum Cheeta"},
 {name: "VIPER"}, 
 {name: "Russ Bennet Band"}])
 
-musicians = Musician.create([{name: "Zoe Friedman", password: "password"}, 
-{name: "Tony Calabro", password: "password"}, 
-{name: "Nick Cambell", password: "password"}, 
-{name: "Drew Thurlow", password: "password"}, 
-{name: "Kwame Remy", password: "password"}, 
-{name: "Patty Nilson", password: "password"}])
+musicians = Musician.create([{name: "Zoe Friedman", email: "Zoe@gmail.com", password: "password"}, 
+{name: "Tony Calabro", email: "Tony@gmail.com", password: "password"}, 
+{name: "Nick Cambell", email: "Nick@gmail.com", password: "password"}, 
+{name: "Drew Thurlow", email: "Drew@gmail.com", password: "password"}, 
+{name: "Kwame Remy", email: "Kwame@gmail.com", password: "password"}, 
+{name: "Patty Nilson", email: "Patty@gmail.com", password: "password"}])
 
 MusicianBand.create([
     {musician_id: 1, band_id: 1},

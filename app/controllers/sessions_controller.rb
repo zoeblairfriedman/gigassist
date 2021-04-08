@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @musician = Musician.find_by(name: params[:musician][:name])
+        @musician = Musician.find_by(email: params[:musician][:email])
         if @musician && @musician.authenticate(params[:musician][:password])
           session[:user_id] = @musician.id
           redirect_to musician_path(@musician)
@@ -21,8 +21,10 @@ class SessionsController < ApplicationController
       end
 
       def googleAuth
-        omni = self.request.env["omniauth.auth"][:info][:name]
-        @musician = Musician.find_or_create_by(name: omni) do |m|
+        omni = self.request.env["omniauth.auth"][:info][:email]
+        o_name = self.request.env["omniauth.auth"][:info][:name]
+        @musician = Musician.find_or_create_by(email: omni) do |m|
+          m.name = o_name
           m.password = "make a random generator eventually please"
         end
         if @musician.save
