@@ -7,6 +7,11 @@ class GigSong < ApplicationRecord
     scope :not_over, -> { where("date > ?", DateTime.now)}
 
 
+    def self.search(search)
+        if search 
+            Song.find_by(name: search)
+        end
+    end
     
     def song_name=(name)
         self.song = Song.find_or_create_by(name: name) unless name == ""

@@ -1,8 +1,17 @@
+<h2> Search your songs </h2>
+
+<%= form_tag(songs_path, method: :get) do %>
+    <%= text_field_tag(:song) %>
+    <%= submit_tag "Search" %>
+    <% end %>
+
+
 <h2> Upcoming Songs </h2>
 
 <ul>
 
     <% @gs_array.each do |gs| %>
+ 
         <li> <%= gs.song.name %> - <%= gs.show_date %> </li>
         <% end %>
 

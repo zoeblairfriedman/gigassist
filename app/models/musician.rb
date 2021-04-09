@@ -12,6 +12,7 @@ class Musician < ApplicationRecord
 
 
 
+
     private
 
     def name_is_titlecase

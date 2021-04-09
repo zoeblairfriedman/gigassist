@@ -47,9 +47,6 @@ def index
     @musician = Musician.find_by(id: params[:musician_id])
     @gigs = @musician.gigs
     @gigs = @musician.gigs.by_date.not_over
-    @songs = @musician.songs
-    @bands = @musician.bands
-  
 end
 
 

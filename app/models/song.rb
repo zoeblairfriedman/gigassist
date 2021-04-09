@@ -4,6 +4,10 @@ class Song < ApplicationRecord
 
     before_validation :name_is_titlecase, on: :create
 
+    
+  def self.search(search)
+  end
+
     private
 
     def name_is_titlecase

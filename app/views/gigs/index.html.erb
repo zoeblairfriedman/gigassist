@@ -1,8 +1,20 @@
 <h2> All Gigs </h2>
 <ul>
+
+<% if @musician == current_musician %>
+
 <% @gigs.each do |gig| %>
     <li><%= gig.band.name %> at <%= link_to gig.venue, gig_path(gig) %> <%= show_date(gig) %></li>
     <% end %>
     </ul>
+
+    <% else %>
+
+    <% @gigs.each do |gig| %>
+        <li><%= gig.band.name %> at <%= gig.venue %> <%= show_date(gig) %></li>
+        <% end %>
+        </ul>
+
+    <% end %>
 
 
